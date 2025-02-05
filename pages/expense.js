@@ -145,7 +145,7 @@ export default function Expense() {
             ) : (
                 <div className="expense">
                     <h1>No budget</h1>
-                    <Link href={"/budget"}>
+                    <Link href={"/realBudget"}>
                         <button className="setBudget" type="submit">Set Budget</button>
                     </Link>
                 </div>

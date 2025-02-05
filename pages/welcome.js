@@ -1,6 +1,6 @@
 import React from "react";
 import { useState } from "react";
-import { Layout } from "./layout";
+import Layout from "./layout";
 import Link from "next/link";
 
 export default function Welcome() {

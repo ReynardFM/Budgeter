@@ -1,9 +1,9 @@
-import Welcome from "./welcome";
+import Budget from "./budget";
 
 export default function Home() {
   return (
     <div>
-      <Welcome />
+      <Budget />
     </div>
   );
 }

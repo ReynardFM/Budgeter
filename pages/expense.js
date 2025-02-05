@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { Layout } from "./layout";
+import Layout from "./layout";
 import Link from "next/link";
 
 export default function Expense() {
@@ -8,13 +8,18 @@ export default function Expense() {
         return new Promise(resolve => setTimeout(resolve, ms));
     }
 
-    const [local, setlocal] = useState(localStorage.getItem("budget"));
+    const [local, setlocal] = useState(false);
     const [input, setInput] = useState(null);
-    const [end, min] = useState(localStorage.getItem("sub")?localStorage.getItem("sub"):local);
-    const [expense, append] = useState(localStorage.getItem("expense")?JSON.parse(localStorage.getItem("expense")):[]);
+    const [end, min] = useState(local);
+    const [expense, append] = useState([]);
     const [category, setCategory] = useState("");
     const [amount, setAmount] = useState(0);
 
+    useEffect(()=>{
+        setlocal(localStorage.getItem("budget")?localStorage.getItem("budget"):false);
+        min(localStorage.getItem("sub")?localStorage.getItem("sub"):local);
+        append(localStorage.getItem("expense")?JSON.parse(localStorage.getItem("expense")):[])
+    },[])
     
     
     function getAmount(e){

@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { Layout } from "./layout";
+import  Layout from "./layout";
 import { useRouter } from 'next/router'
 
 
@@ -10,10 +10,12 @@ export default function Budget() {
     }
     const router = useRouter();
     const [message, setMessage] = useState(false);
-    const [input, setInput] = useState(localStorage.getItem("budget")?localStorage.getItem("budget"):0);
+    const [input, setInput] = useState(0);
     const [submit, setSubmit] = useState(false);
 
-    
+    useEffect(()=>{
+        setInput(localStorage.getItem("budget")?localStorage.getItem("budget"):0);
+    },[])
         
     
     const getInput = (event) => {

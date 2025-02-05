@@ -1,6 +1,5 @@
 import Link from "next/link";
 import React from "react";
-
 export default function Layout(){
     return(
         <div className="nav">

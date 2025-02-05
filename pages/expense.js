@@ -10,6 +10,7 @@ export default function Expense() {
 
     const [local, setlocal] = useState(false);
     const [input, setInput] = useState(null);
+    const [count, changeCount] = useState(0);
     const [end, min] = useState(local);
     const [expense, append] = useState([]);
     const [category, setCategory] = useState("");
@@ -43,6 +44,7 @@ export default function Expense() {
             alert('You have reached your budget');
         } 
         else{
+            changeCount(count +1);
             append([...expense,{cat:category,num:amount}]);
             min(end-amount)
             let temp = localStorage.getItem("expense")?JSON.parse(localStorage.getItem("expense")):[];
@@ -55,13 +57,14 @@ export default function Expense() {
     };
 
     function delExpense(){
-        if(local == end || !input){
+        if(local == end || !input || input> count){
             alert("No expense to delete or wrong input");
             document.querySelectorAll('form').forEach((e)=>{
                 e.reset();
             });
             return false;
         }else{
+            changeCount(count-1);
             alert("Deleting expense " + input)
             let temp = localStorage.getItem("expense")?JSON.parse(localStorage.getItem("expense")):[];
             let tempamount = Number(expense[input-1].num);
@@ -70,10 +73,11 @@ export default function Expense() {
             delay(100);
             append(temp);
             delay(100);
-            min(end+tempamount)
+            min(end+tempamount);
             delay(100);            
             localStorage.setItem("expense",JSON.stringify(temp));
-            localStorage.setItem("sub",end);
+            delay(100);   
+            localStorage.setItem("sub",end+tempamount);
             document.querySelectorAll('form').forEach((e)=>{
                 e.reset();
             });

@@ -29,11 +29,11 @@ export default function Budget() {
             setMessage(false);
             alert('Please enter a value');
         }else{
-            localStorage.setItem("budget",input)
+            localStorage.setItem("budget",Number(input));
             setMessage(true);
             setSubmit(true);
             localStorage.removeItem("expense");
-            localStorage.removeItem("sub");
+            localStorage.setItem("sub",Number(input));
             delay(100);
             router.push('/realExpense');
         }
@@ -47,6 +47,8 @@ export default function Budget() {
         setMessage(false);
         setInput('');
         localStorage.removeItem("budget");
+        localStorage.removeItem("expense");
+        localStorage.removeItem("sub");
     };  
 
     return (

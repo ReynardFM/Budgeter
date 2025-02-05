@@ -1,6 +1,6 @@
 import Link from "next/link";
 import React from "react";
-export function Layout(){
+export default function Layout(){
     return(
         <div className="nav">
             <h1 className="title">Budgeter</h1>

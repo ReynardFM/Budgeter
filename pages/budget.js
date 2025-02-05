@@ -1,6 +1,6 @@
 import React from "react";
 import { useState, useEffect } from "react";
-import { Layout } from "./layout";
+import Layout from "./layout";
 import { useRouter } from 'next/router'
 
 

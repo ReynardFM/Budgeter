@@ -1,13 +1,15 @@
 import dynamic from 'next/dynamic';
 
-const DynamicHeader = dynamic(() => import('./expense'), {
-        ssr: false,
-    });
+// Dynamically import the Expense component with server-side rendering (SSR) disabled
+const DynamicExpense = dynamic(() => import('./expense'), {
+    ssr: false, // Ensures that this component is only loaded on the client-side
+});
 
-export default function Load(){
-    return(
+export default function Load() {
+    return (
         <>
-            <DynamicHeader/>
+            {/* Render the dynamically loaded Expense component */}
+            <DynamicExpense />
         </>
     );
 }
